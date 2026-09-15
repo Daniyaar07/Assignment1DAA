@@ -1,2 +1,43 @@
 public class MergeSorter {
+    public void sort(int[] array){
+        mergeSort(array, 0 , array.length - 1);
+    }
+    private void mergeSort(int[]  array , int left, int right){
+        if (left >= right){
+            return;
+        }
+        int middle = (left + right) / 2;
+        mergeSort(array , left , middle);
+        mergeSort(array , middle + 1 , right);
+        merge(array , left , middle , right);
+    }
+    private void merge(int[] array , int left , int middle , int right){
+        int[] temp = new int[right - left + 1];
+        int i = left;
+        int j = middle + 1;
+        int k = 0;
+        while (i<= middle && j<= right){
+            if(array[i] < array[j]){
+                temp[k] = array[i];
+                i++;
+            }else {
+                temp[k] = array[j];
+                j++;
+            }
+            k++;
+        }
+        while (i <=middle){
+            temp[k] =array[i];
+            i++;
+            k++;
+        }
+        while (j <=right){
+            temp[k] = array[j];
+            j++;
+            k++;
+        }
+        for (int x =0; x < temp.length; x++){
+            array[left +x] = temp[x];
+        }
+    }
 }
