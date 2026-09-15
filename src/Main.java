@@ -14,5 +14,7 @@ public class Main {
         quickSorter.sort(numbers2);
         System.out.println("QuickSort:");
         System.out.println(Arrays.toString(numbers2));
+        System.out.println("Comparisons:" + quickSorter.getComparisons());
+        System.out.println("Max depth:" + quickSorter.getMaxDepth());
     }
 }
