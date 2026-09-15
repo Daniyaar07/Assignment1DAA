@@ -6,6 +6,8 @@ public class Main {
         sorter.sort(numbers);
         System.out.println("MergeSort:");
         System.out.println(Arrays.toString(numbers));
+        System.out.println("Comparisons:" + sorter.getComparisons());
+        System.out.println("Max depth:" + sorter.getMaxDepth());
 
         int[] numbers2 = {5 , 2, 8 , 1, 3};
         QuickSorter quickSorter = new QuickSorter();
