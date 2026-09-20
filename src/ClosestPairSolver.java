@@ -40,7 +40,14 @@ public class ClosestPairSolver {
         int rightCount = 0;
 
         for(int i = 0; i < pointsByY.length; i++){
-            if(pointsByY[i].x < middlePoint.x && leftCount < leftY.length){
+            boolean found = false;
+            for(int j = 0; j< leftX.length; j++){
+                if (pointsByY[i] == leftX[j]){
+                    found = true;
+                    break;
+                }
+            }
+            if(found){
                 leftY[leftCount] = pointsByY[i];
                 leftCount++;
             }
