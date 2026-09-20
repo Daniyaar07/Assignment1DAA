@@ -10,7 +10,9 @@ public class Tests {
                 {5, 2, 8 , 1, 3},
                 {},
                 {7},
-                {5, 2, 5, 2, 1, 1}
+                {5, 2, 5, 2, 1, 1},
+                {1, 2 , 3, 4, 5},
+                {5 , 4 , 3, 2, 1}
         };
         for (int i = 0; i< tests.length; i++){
             int[] array = tests[i].clone();
@@ -35,7 +37,9 @@ public class Tests {
                 {5, 2, 8 , 1, 3},
                 {},
                 {7},
-                {5, 2, 5, 2, 1, 1}
+                {5, 2, 5, 2, 1, 1},
+                {1 , 2, 3, 4, 5},
+                {5 , 4, 3, 2, 1}
         };
         for (int i = 0; i < tests.length; i++){
             int[] array = tests[i].clone();
