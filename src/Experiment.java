@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.Arrays;
 public class Experiment {
     public static void main(String[] args){
         int[] sizes = {100 , 1000 , 10000};
@@ -13,13 +14,21 @@ public class Experiment {
                 array1[i] = num;
                 array2[i] = num;
             }
+
+            int[] sorted1 = array1.clone();
+            int[] sorted2 = array2.clone();
+
+            Arrays.sort(sorted1);
+            Arrays.sort(sorted2);
+
+            System.out.println("Size: " + size);
+
             MergeSorter mergeSorter = new MergeSorter();
             long start = System.nanoTime();
             mergeSorter.sort(array1);
             long time = System.nanoTime() - start;
 
-            System.out.println("Size: " + size);
-            System.out.println("MergeSort time: " + time);
+            System.out.println("Random MergeSort time: " + time);
             System.out.println("Comparisons: " + mergeSorter.getComparisons());
             System.out.println("Max depth: " + mergeSorter.getMaxDepth());
 
@@ -28,9 +37,27 @@ public class Experiment {
             quickSorter.sort(array2);
             time = System.nanoTime() - start;
 
-            System.out.println("QuickSort time: " + time);
+            System.out.println("Random QuickSort time: " + time);
             System.out.println("Comparisons: " + quickSorter.getComparisons());
             System.out.println("Max depth: " + quickSorter.getMaxDepth());
+
+            MergeSorter mergeSorted = new MergeSorter();
+            start = System.nanoTime();
+            mergeSorted.sort(sorted1);
+            time = System.nanoTime() - start;
+
+            System.out.println("Sorted MergeSort time: " + time);
+            System.out.println("Comparisons: " + mergeSorted.getComparisons());
+            System.out.println("Max depth: " + mergeSorted.getMaxDepth());
+
+            QuickSorter quickSorted = new QuickSorter();
+            start = System.nanoTime();
+            quickSorted.sort(sorted2);
+            time = System.nanoTime() - start;
+
+            System.out.println("Sorted QuickSort time: " + time);
+            System.out.println("Comparisons: " + quickSorted.getComparisons());
+            System.out.println("Max depth: " + quickSorted.getMaxDepth());
 
             int[] array3 = new int[size];
             for(int i = 0; i < size; i++){
