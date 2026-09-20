@@ -21,6 +21,19 @@ public class Experiment {
             Arrays.sort(sorted1);
             Arrays.sort(sorted2);
 
+            int[] reverse1 = sorted1.clone();
+            int[] reverse2 = sorted2.clone();
+
+            for(int i = 0; i < size /2; i++){
+                int temp = reverse1[i];
+                reverse1[i] = reverse1[size - 1 -i];
+                reverse1[size - 1- i] = temp;
+
+                temp = reverse2[i];
+                reverse2[i] = reverse2[size - 1 - i];
+                reverse2[size - 1- i] = temp;
+            }
+
             System.out.println("Size: " + size);
 
             MergeSorter mergeSorter = new MergeSorter();
@@ -58,6 +71,24 @@ public class Experiment {
             System.out.println("Sorted QuickSort time: " + time);
             System.out.println("Comparisons: " + quickSorted.getComparisons());
             System.out.println("Max depth: " + quickSorted.getMaxDepth());
+
+            MergeSorter mergeReverse = new MergeSorter();
+            start = System.nanoTime();
+            mergeReverse.sort(reverse1);
+            time = System.nanoTime() - start;
+
+            System.out.println("Reverse MergeSort time: " + time);
+            System.out.println("Comparisons: " + mergeReverse.getComparisons());
+            System.out.println("Max depth: " + mergeReverse.getMaxDepth());
+
+            QuickSorter quickReverse = new QuickSorter();
+            start= System.nanoTime();
+            quickReverse.sort(reverse2);
+            time = System.nanoTime() - start;
+
+            System.out.println("Reverse QuickSort time: " + time);
+            System.out.println("Comparisons: " + quickReverse.getComparisons());
+            System.out.println("Max depth: " + quickReverse.getMaxDepth());
 
             int[] array3 = new int[size];
             for(int i = 0; i < size; i++){
