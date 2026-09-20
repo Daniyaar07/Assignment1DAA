@@ -1,8 +1,11 @@
 import java.util.Arrays;
+import java.util.Random;
+
 public class Tests {
     public static void main(String[] args) {
         testMergeSort();
         testQuickSort();
+        testDeterministicSelector();
     }
 
     public static void testMergeSort() {
@@ -57,5 +60,28 @@ public class Tests {
                 System.out.println("QuickSort test " + (i+1) + " failed");
             }
         }
+        System.out.println();
+    }
+    public static void testDeterministicSelector(){
+        Random random = new Random();
+        for(int t = 0; t<100; t++){
+            int[] array = new int[20];
+
+            for(int i = 0; i< array.length; i++){
+                array[i] = random.nextInt(100);
+            }
+            int[] expected = array.clone();
+
+            Arrays.sort(expected);
+            int k = random.nextInt(array.length);
+            DeterministicSelector selector = new DeterministicSelector();
+            int result = selector.select(array, k);
+
+            if(result != expected[k]){
+                System.out.println("Deterministic Select test failed");
+                return;
+            }
+        }
+        System.out.println("Deterministic Select: 100 tests passed");
     }
 }
