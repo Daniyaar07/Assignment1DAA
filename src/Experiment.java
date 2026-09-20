@@ -41,9 +41,11 @@ public class Experiment {
                 duplicate1[i] = num;
                 duplicate2[i] = num;
             }
+            System.out.println();
+            System.out.println("-----Size: " + size + "-----");
 
-            System.out.println("Size: " + size);
-
+            System.out.println();
+            System.out.println("---Random---");
             MergeSorter mergeSorter = new MergeSorter();
             long start = System.nanoTime();
             mergeSorter.sort(array1);
@@ -61,6 +63,9 @@ public class Experiment {
             System.out.println("Random QuickSort time: " + time);
             System.out.println("Comparisons: " + quickSorter.getComparisons());
             System.out.println("Max depth: " + quickSorter.getMaxDepth());
+
+            System.out.println();
+            System.out.println("---Sorted---");
 
             MergeSorter mergeSorted = new MergeSorter();
             start = System.nanoTime();
@@ -80,6 +85,9 @@ public class Experiment {
             System.out.println("Comparisons: " + quickSorted.getComparisons());
             System.out.println("Max depth: " + quickSorted.getMaxDepth());
 
+            System.out.println();
+            System.out.println("---Reverse---");
+
             MergeSorter mergeReverse = new MergeSorter();
             start = System.nanoTime();
             mergeReverse.sort(reverse1);
@@ -97,6 +105,9 @@ public class Experiment {
             System.out.println("Reverse QuickSort time: " + time);
             System.out.println("Comparisons: " + quickReverse.getComparisons());
             System.out.println("Max depth: " + quickReverse.getMaxDepth());
+
+            System.out.println();
+            System.out.println("---Duplicate---");
 
             MergeSorter mergeDuplicate = new MergeSorter();
             start = System.nanoTime();
@@ -116,6 +127,9 @@ public class Experiment {
             System.out.println("Comparisons: " + quickDuplicate.getComparisons());
             System.out.println("Max depth: " + quickDuplicate.getMaxDepth());
 
+            System.out.println();
+            System.out.println("---Deterministic Select---");
+
             int[] array3 = new int[size];
             for(int i = 0; i < size; i++){
                 array3[i] = random.nextInt(10000);
@@ -131,6 +145,8 @@ public class Experiment {
             System.out.println("Comparisons: " + selector.getComparisons());
             System.out.println("Max Depth: " + selector.getMaxDepth());
 
+            System.out.println();
+            System.out.println("---Closest Pair---");
 
             Point[] points = new Point[size];
             for(int i = 0; i < size; i++){
@@ -146,6 +162,7 @@ public class Experiment {
             System.out.println("Comparisons: " + closestPair.getComparisons());
             System.out.println("Max Depth: " + closestPair.getMaxDepth());
 
+            System.out.println();
             System.out.println("--------------------------");
         }
     }
