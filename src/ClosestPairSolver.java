@@ -1,7 +1,11 @@
 import java.util.Arrays;
 import java.util.Comparator;
 public class ClosestPairSolver {
+    private int comparisons = 0;
+    private int maxDepth = 0;
     public double findClosest(Point[]  points){
+        comparisons = 0;
+        maxDepth = 0;
         Point[] pointsByX = points.clone();
         Point[] pointsByY = points.clone();
         Arrays.sort(pointsByX, new Comparator<Point>() {
@@ -14,9 +18,12 @@ public class ClosestPairSolver {
                 return Double.compare(a.y , b.y);
             }
         });
-        return closest(pointsByX , pointsByY);
+        return closest(pointsByX , pointsByY , 1);
     }
-    private double closest(Point[] pointsByX , Point[] pointsByY){
+    private double closest(Point[] pointsByX , Point[] pointsByY , int depth){
+        if(depth > maxDepth){
+            maxDepth = depth;
+        }
         int n = pointsByX.length;
         if(n<= 3){
             return bruteForce(pointsByX);
@@ -42,8 +49,8 @@ public class ClosestPairSolver {
                 rightCount++;
             }
         }
-        double leftDistance = closest(leftX , leftY);
-        double rightDistance = closest(rightX , rightY);
+        double leftDistance = closest(leftX , leftY , depth +1);
+        double rightDistance = closest(rightX , rightY , depth + 1);
 
         double minDistance = Math.min(leftDistance , rightDistance);
         Point[] strip = new Point[n];
@@ -60,6 +67,7 @@ public class ClosestPairSolver {
                 if(strip[j].y - strip[i].y >= minDistance){
                     break;
                 }
+                comparisons++;
                 double distance = distance(strip[i] , strip[j]);
                 if (distance < minDistance){
                     minDistance = distance;
@@ -73,6 +81,7 @@ public class ClosestPairSolver {
         double minDistance = Double.MAX_VALUE;
         for (int i = 0; i< points.length; i++){
             for(int j = i+1;  j< points.length; j++){
+                comparisons ++;
                 double distance = distance(points[i] , points[j]);
                 if(distance < minDistance){
                     minDistance = distance;
@@ -85,5 +94,11 @@ public class ClosestPairSolver {
         double x = a.x - b.x;
         double y = a.y - b.y;
         return Math.sqrt(x * x + y * y);
+    }
+    public int getComparisons(){
+        return comparisons;
+    }
+    public int getMaxDepth(){
+        return maxDepth;
     }
 }
