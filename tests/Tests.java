@@ -6,6 +6,7 @@ public class Tests {
         testMergeSort();
         testQuickSort();
         testDeterministicSelector();
+        testClosestPair();
     }
 
     public static void testMergeSort() {
@@ -83,5 +84,38 @@ public class Tests {
             }
         }
         System.out.println("Deterministic Select: 100 tests passed");
+    }
+    public static void testClosestPair(){
+        Point[] points = {
+                new Point(1 , 1),
+                new Point(2 , 2),
+                new Point(5 , 5),
+                new Point(8 , 8)
+        };
+        ClosestPairSolver solver = new ClosestPairSolver();
+        double result = solver.findClosest(points);
+        double bruteResult = bruteForce(points);
+
+        if(result == bruteResult){
+            System.out.println("Closest Pair test passed");
+        }
+        else{
+            System.out.println("Closest Pair test failed");
+        }
+    }
+    public static double bruteForce(Point[] points){
+        double minDistance = Double.MAX_VALUE;
+        for (int i = 0; i< points.length; i++){
+            for (int j = i+ 1 ; j < points.length; j++){
+                double x = points[i].x - points[j].x;
+                double y = points[i].y - points[j].y;
+
+                double distance = Math.sqrt(x*x + y*y);
+                if (distance < minDistance){
+                    minDistance = distance;
+                }
+            }
+        }
+        return minDistance;
     }
 }
