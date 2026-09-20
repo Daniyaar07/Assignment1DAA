@@ -99,11 +99,11 @@ Full results are stored in:
 
 ### Time vs. n
 
-![Time vs n](docs/plots/time vs n.png)
+![Time vs n](docs/plots/time_vs_n.png)
 
 ### Recursion Depth vs. n
 
-![Recursion Depth vs n](docs/plots/depth vs n.png)
+![Recursion Depth vs n](docs/plots/depth_vs_n.png)
 
 ## D. Discussion
 
@@ -156,6 +156,6 @@ This assignment helped me understand divide-and-conquer algorithms better. I lea
 
 ### Plots
 
-![Time vs n](docs/plots/time vs n.png)
+![Time vs n](docs/plots/time_vs_n.png)
 
-![Recursion Depth vs n](docs/plots/depth vs n.png)
+![Recursion Depth vs n](docs/plots/depth_vs_n.png)
